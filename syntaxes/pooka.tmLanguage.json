@@ -1,0 +1,126 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Pooka",
+  "scopeName": "source.pooka",
+  "patterns": [
+    {
+      "include": "#comment"
+    },
+    {
+      "include": "#string"
+    },
+    {
+      "include": "#number"
+    },
+    {
+      "include": "#constant"
+    },
+    {
+      "include": "#declaration"
+    },
+    {
+      "include": "#keyword"
+    },
+    {
+      "include": "#variant"
+    },
+    {
+      "include": "#function"
+    },
+    {
+      "include": "#type"
+    },
+    {
+      "include": "#operator"
+    },
+    {
+      "include": "#bracket"
+    },
+    {
+      "include": "#delimiter"
+    },
+    {
+      "include": "#identifier"
+    }
+  ],
+  "repository": {
+    "comment": {
+      "patterns": [
+        {
+          "match": "////[^\\n]*",
+          "name": "comment.line.documentation.pooka"
+        },
+        {
+          "match": "///[^\\n]*",
+          "name": "comment.line.documentation.pooka"
+        },
+        {
+          "match": "//[^\\n]*",
+          "name": "comment.line.double-slash.pooka"
+        }
+      ]
+    },
+    "string": {
+      "begin": "\"",
+      "end": "\"",
+      "name": "string.quoted.double.pooka",
+      "patterns": [
+        {
+          "match": "\\\\(?:u\\{[0-9a-fA-F]+\\}|[^u])",
+          "name": "constant.character.escape.pooka"
+        }
+      ]
+    },
+    "number": {
+      "match": "(?:0[xX][0-9a-fA-F_]+|0[bB][01_]+|0[oO][0-7_]+|[0-9][0-9_]*(\\.[0-9][0-9_]*)?([eE][+-]?[0-9][0-9_]*)?)",
+      "name": "constant.numeric.pooka"
+    },
+    "constant": {
+      "match": "\\b(?:False|super|True|self|Nil)\\b",
+      "name": "constant.language.pooka"
+    },
+    "declaration": {
+      "match": "\\b(interface|external|native|actor|class|enum)\\s+(_*[A-Z][a-zA-Z0-9_]*)\\b",
+      "captures": {
+        "1": {
+          "name": "keyword.control.pooka"
+        },
+        "2": {
+          "name": "entity.name.type.pooka"
+        }
+      }
+    },
+    "keyword": {
+      "match": "\\b(?:interface|continue|external|assert|import|module|native|actor|break|class|match|panic|echo|enum|from|loop|skip|test|todo|with|let|new|var|as|be|fn|if|in|is)\\b",
+      "name": "keyword.control.pooka"
+    },
+    "variant": {
+      "match": "_*[A-Z][a-zA-Z0-9_]*\\._*[A-Z][a-zA-Z0-9_]*",
+      "name": "constant.other.pooka"
+    },
+    "function": {
+      "match": "_*[a-z][a-zA-Z0-9_]*(?=\\s*\\()",
+      "name": "entity.name.function.pooka"
+    },
+    "type": {
+      "match": "_*[A-Z][a-zA-Z0-9_]*",
+      "name": "entity.name.type.pooka"
+    },
+    "operator": {
+      "match": "(?:!=|&&|\\*=|\\+=|-=|<=|==|>=|\\|>|\\|\\||\\.\\.|->|!|%|&|\\*|\\+|-|/|<|=|>|\\?|\\|)",
+      "name": "keyword.operator.pooka"
+    },
+    "bracket": {
+      "match": "(?:#\\(|<<|>>|\\(|\\)|\\[|\\]|\\{|\\})",
+      "name": "punctuation.section.pooka"
+    },
+    "delimiter": {
+      "match": "(?:,|:|\\.)",
+      "name": "punctuation.separator.pooka"
+    },
+    "identifier": {
+      "match": "_*[a-z][a-zA-Z0-9_]*",
+      "name": "variable.other.pooka"
+    }
+  }
+}

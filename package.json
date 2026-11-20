@@ -1,0 +1,65 @@
+{
+  "name": "pooka",
+  "displayName": "Pooka",
+  "description": "Syntax highlighting for Pooka source and spec files",
+  "version": "0.1.0",
+  "publisher": "pooka-lang",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pooka-lang/pooka-vscode"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "pooka",
+    "beam",
+    "erlang",
+    "syntax"
+  ],
+  "icon": "icons/pooka.png",
+  "contributes": {
+    "languages": [
+      {
+        "id": "pooka",
+        "aliases": [
+          "Pooka",
+          "pooka"
+        ],
+        "extensions": [
+          ".pooka",
+          ".spec.pooka"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icons/pooka-light.svg",
+          "dark": "./icons/pooka-dark.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "pooka",
+        "scopeName": "source.pooka",
+        "path": "./syntaxes/pooka.tmLanguage.json"
+      }
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/pooka-lang/pooka-vscode/issues"
+  },
+  "homepage": "https://pooka.run",
+  "scripts": {
+    "test": "node --test tests/*.test.cjs",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^4.1.1",
+    "vscode-oniguruma": "^2.0.1",
+    "vscode-textmate": "^9.3.0"
+  }
+}
