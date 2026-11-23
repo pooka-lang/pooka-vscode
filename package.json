@@ -1,7 +1,7 @@
 {
   "name": "pooka",
   "displayName": "Pooka",
-  "description": "Syntax highlighting for Pooka source and spec files",
+  "description": "🦌 Give Pooka a place in Visual Studio Code.",
   "version": "0.1.0",
   "publisher": "pooka-lang",
   "license": "Apache-2.0",
@@ -10,7 +10,7 @@
     "url": "https://github.com/pooka-lang/pooka-vscode"
   },
   "engines": {
-    "vscode": "^1.80.0"
+    "vscode": "^1.82.0"
   },
   "categories": [
     "Programming Languages"
@@ -47,7 +47,24 @@
         "scopeName": "source.pooka",
         "path": "./syntaxes/pooka.tmLanguage.json"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Pooka",
+      "properties": {
+        "pooka.languageServer.enabled": {
+          "type": "boolean",
+          "default": true,
+          "scope": "application",
+          "description": "Start pooka lsp in trusted workspaces. Reload the window after changing this setting."
+        },
+        "pooka.languageServer.path": {
+          "type": "string",
+          "default": "pooka",
+          "scope": "application",
+          "description": "Pooka compiler executable. Use an absolute path if pooka is unavailable on PATH. Reload the window after changing this setting."
+        }
+      }
+    }
   },
   "bugs": {
     "url": "https://github.com/pooka-lang/pooka-vscode/issues"
@@ -61,5 +78,19 @@
     "@vscode/vsce": "^4.1.1",
     "vscode-oniguruma": "^2.0.1",
     "vscode-textmate": "^9.3.0"
+  },
+  "dependencies": {
+    "vscode-languageclient": "9.0.1"
+  },
+  "main": "./extension.cjs",
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": "limited",
+      "description": "The Pooka compiler runs only in trusted workspaces.",
+      "restrictedConfigurations": [
+        "pooka.languageServer.enabled",
+        "pooka.languageServer.path"
+      ]
+    }
   }
 }

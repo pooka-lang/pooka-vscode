@@ -14,3 +14,4 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run package
+      - run: unzip -Z1 pooka-*.vsix | grep -Fx extension/node_modules/vscode-languageclient/lib/node/main.js
